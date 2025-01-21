@@ -49,7 +49,7 @@ download is recommended!
   if (!requireNamespace("devtools", quietly = TRUE)){
     install.packages("devtools")
   } 
-  devtools::install_github("lisiarend/PRONE", build_vignettes = TRUE, 
+  devtools::install_github("daisybio/PRONE", build_vignettes = TRUE, 
                            dependencies = TRUE)
   
   # Load and attach PRONE 
