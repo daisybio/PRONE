@@ -49,7 +49,7 @@ download is recommended!
   if (!requireNamespace("devtools", quietly = TRUE)){
     install.packages("devtools")
   } 
-  devtools::install_github("lisiarend/PRONE", build_vignettes = TRUE, 
+  devtools::install_github("daisybio/PRONE", build_vignettes = TRUE, 
                            dependencies = TRUE)
   
   # Load and attach PRONE 
@@ -83,7 +83,7 @@ methods is available.
 
 To get familiar with the functionalities of the R package, check out the
 article [Getting started with
-PRONE](https://lisiarend.github.io/PRONE/articles/PRONE.html).
+PRONE](https://daisybio.github.io/PRONE/articles/PRONE.html).
 
 ## Citation
 
