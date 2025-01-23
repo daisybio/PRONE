@@ -265,7 +265,6 @@ detect_outliers_POMA <- function(se, ain="log2", condition = NULL, method="eucli
   # prepare data
   md <- data.table::as.data.table(SummarizedExperiment::colData(se))
   if(group){
-    condition <- S4Vectors::metadata(se)$condition
     condition_vector <- md[[condition]]
   } else {
     condition <- "complete"

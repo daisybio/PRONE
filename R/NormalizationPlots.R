@@ -127,12 +127,20 @@ plot_boxplots <- function(se, ain = NULL, color_by = NULL, label_by = NULL, face
   col_vector <- rev(col_vector)
 
   if(facet_norm){
-    p <- ggplot2::ggplot(melted_dt, ggplot2::aes(x=get("Intensity"), y=get(label_by), fill=get(color_by))) +
-      ggplot2::geom_boxplot() +
-      ggplot2::stat_boxplot(geom ='errorbar', width = 0.4) +
-      ggplot2::scale_fill_manual(name = color_by, values = col_vector) +
-      ggplot2::labs(x="Intensity", y="Samples") +
-      ggplot2::facet_wrap(~Assay, scales="free_x", ncol=ncol)
+    if(is.null(color_by)){
+      p <- ggplot2::ggplot(melted_dt, ggplot2::aes(x=get("Intensity"), y=get(label_by))) +
+        ggplot2::geom_boxplot() +
+        ggplot2::stat_boxplot(geom ='errorbar', width = 0.4) +
+        ggplot2::labs(x="Intensity", y="Samples") +
+        ggplot2::facet_wrap(~Assay, scales="free_x", ncol=ncol)
+    } else {
+      p <- ggplot2::ggplot(melted_dt, ggplot2::aes(x=get("Intensity"), y=get(label_by), fill=get(color_by))) +
+        ggplot2::geom_boxplot() +
+        ggplot2::stat_boxplot(geom ='errorbar', width = 0.4) +
+        ggplot2::scale_fill_manual(name = color_by, values = col_vector) +
+        ggplot2::labs(x="Intensity", y="Samples") +
+        ggplot2::facet_wrap(~Assay, scales="free_x", ncol=ncol)
+    }
     if(!show_sample_names){
       p <- p + ggplot2::theme(axis.text.y = ggplot2::element_blank())
     }
@@ -140,11 +148,18 @@ plot_boxplots <- function(se, ain = NULL, color_by = NULL, label_by = NULL, face
     p <- list()
     for(method in c(ain)){
       dt <- melted_dt[melted_dt$Assay == method,]
-      tmp <- ggplot2::ggplot(dt, ggplot2::aes(x=get("Intensity"), y=get(label_by), fill=get(color_by))) +
-        ggplot2::geom_boxplot() +
-        ggplot2::stat_boxplot(geom ='errorbar', width = 0.4) +
-        ggplot2::scale_fill_manual(name = color_by, values = col_vector) +
-        ggplot2::labs(x="Intensity", y="Samples")
+      if(is.null(color_by)){
+        tmp <- ggplot2::ggplot(dt, ggplot2::aes(x=get("Intensity"), y=get(label_by))) +
+          ggplot2::geom_boxplot() +
+          ggplot2::stat_boxplot(geom ='errorbar', width = 0.4) +
+          ggplot2::labs(x="Intensity", y="Samples")
+      } else {
+        tmp <- ggplot2::ggplot(dt, ggplot2::aes(x=get("Intensity"), y=get(label_by), fill=get(color_by))) +
+          ggplot2::geom_boxplot() +
+          ggplot2::stat_boxplot(geom ='errorbar', width = 0.4) +
+          ggplot2::scale_fill_manual(name = color_by, values = col_vector) +
+          ggplot2::labs(x="Intensity", y="Samples")
+      }
       if(!show_sample_names){
         tmp <- tmp + ggplot2::theme(axis.text.y = ggplot2::element_blank())
       }
@@ -184,7 +199,7 @@ plot_densities <- function(se, ain = NULL, color_by = NULL, facet_norm = TRUE, n
 
   # get color and label values
   color_by <- get_color_value(se, color_by)
-
+ 
   # get data for plot
   melted_dt <- get_complete_dt(se, ain=ain)
 
@@ -194,19 +209,32 @@ plot_densities <- function(se, ain = NULL, color_by = NULL, facet_norm = TRUE, n
   col_vector <- rev(col_vector)
 
   if(facet_norm){
-    p <- ggplot2::ggplot(melted_dt, ggplot2::aes(x=get("Intensity"), color=get(color_by))) +
-      ggplot2::geom_density(na.rm=TRUE) +
-      ggplot2::labs(x="Intensity", y="Density") +
-      ggplot2::facet_wrap(~Assay, scales="free", ncol = ncol) +
-      ggplot2::scale_color_manual(name = color_by, values = col_vector)
+    if(is.null(color_by)){
+      p <- ggplot2::ggplot(melted_dt, ggplot2::aes(x=get("Intensity"))) +
+        ggplot2::geom_density(na.rm=TRUE) +
+        ggplot2::labs(x="Intensity", y="Density") +
+        ggplot2::facet_wrap(~Assay, scales="free", ncol = ncol)
+    } else {
+      p <- ggplot2::ggplot(melted_dt, ggplot2::aes(x=get("Intensity"), color=get(color_by))) +
+        ggplot2::geom_density(na.rm=TRUE) +
+        ggplot2::labs(x="Intensity", y="Density") +
+        ggplot2::facet_wrap(~Assay, scales="free", ncol = ncol) +
+        ggplot2::scale_color_manual(name = color_by, values = col_vector)
+    }
   } else {
     p <- list()
     for(method in c(ain)){
       dt <- melted_dt[melted_dt$Assay == method,]
-      tmp <- ggplot2::ggplot(dt, ggplot2::aes(x=get("Intensity"), color=get(color_by))) +
-        ggplot2::geom_density(na.rm=TRUE) +
-        ggplot2::labs(x="Intensity", y="Density") +
-        ggplot2::scale_color_manual(name = color_by, values = col_vector)
+      if(is.null(color_by)){
+        tmp <- ggplot2::ggplot(dt, ggplot2::aes(x=get("Intensity"))) +
+          ggplot2::geom_density(na.rm=TRUE) +
+          ggplot2::labs(x="Intensity", y="Density")
+      } else {
+        tmp <- ggplot2::ggplot(dt, ggplot2::aes(x=get("Intensity"), color=get(color_by))) +
+          ggplot2::geom_density(na.rm=TRUE) +
+          ggplot2::labs(x="Intensity", y="Density") +
+          ggplot2::scale_color_manual(name = color_by, values = col_vector)
+      }
       p[[method]] <- tmp
     }
   }

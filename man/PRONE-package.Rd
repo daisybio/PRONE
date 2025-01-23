@@ -11,8 +11,8 @@ High-throughput omics data are often affected by systematic biases introduced th
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/lisiarend/PRONE}
-  \item Report bugs at \url{https://github.com/lisiarend/PRONE/issues}
+  \item \url{https://github.com/daisybio/PRONE}
+  \item Report bugs at \url{https://github.com/daisybio/PRONE/issues}
 }
 
 }
