@@ -87,4 +87,4 @@ PRONE](https://daisybio.github.io/PRONE/articles/PRONE.html).
 
 ## Citation
 
-TODO
+The preprint is available on BioRxiv: [https://doi.org/10.1101/2025.01.27.634993](https://doi.org/10.1101/2025.01.27.634993).
