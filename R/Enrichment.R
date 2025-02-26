@@ -74,7 +74,7 @@ plot_intersection_enrichment <- function(se, de_res, ain = NULL, comparisons = N
         }
       }
       top_go$present <- TRUE
-      dt <- data.table::dcast(top_go, ...~query, value.var = "present")
+      dt <- data.table::dcast(as.data.table(top_go), ...~query, value.var = "present")
       dt <- dt[order(dt$source),]
       terms <- paste0(dt$term_name, " (", dt$source, ")")
       source <- dt$source
