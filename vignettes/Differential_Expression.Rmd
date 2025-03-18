@@ -231,6 +231,37 @@ DT::datatable(extract_consensus_DE_candidates(de_res, ain = NULL,
               options = list(scrollX = TRUE))
 ```
 
+# Functional enrichment analysis
+
+Finally, to biologically interpret the DE results of the different normalization methods, PRONE offers the ability to perform functional enrichment on the different sets of DE proteins originating from different normalization methods. The function `plot_intersection_enrichment()` can be used to visualize the functional enrichment results of the DE proteins of different normalization methods. This function returns two types of plot: a heatmap of enriched terms visualizing whether a term in enriched in the DE set of a specific normalization method and a heatmap showing Jaccard similarity coefficients to quantify the similarity of the enriched terms between the different normalization methods.
+
+For this analysis, the `gprofiler2` package is used to perform the functional enrichment analysis. The following parameters are required:
+
+* se: SummarizedExperiment object
+* de_res: DE results
+* comparison: Specific comparison
+* ain: Vector of normalization methods to perform functional enrichment
+* id_column: Column name of the rowData of the SummarizedExperiment object which includes the gene names. If MaxQuant data is provided with multiple gene names per protein group, the entries in the id_column are split by ";".
+* organism: Organism name (gprofiler parameter, example: hsapiens, mmusculus)
+* source: Data source to use (gprofiler parameter, example: KEGG, GO:BP, GO:MF, GO:CC, REAC, HP, ...)
+
+```{r}
+enrich_results <- plot_intersection_enrichment(se, de_res, comparison = "PTB-HC", 
+                             ain = c("IRS_on_Median", "IRS_on_RobNorm", "RobNorm"), 
+                             id_column = "Gene.Names", organism = "hsapiens", 
+                             source = "GO:BP", signif_thr = 0.05)
+```
+
+```{r, fig.cap = "Heatmap showing enriched terms of the DE sets between different normalization methods for a specific comparison."}
+enrich_results$enrichment_term_plot
+
+```
+
+```{r, fig.cap = "Heatmap showing the Jaccard similarity indices of the enriched terms between different normalization methods for a specific comparison."}
+enrich_results$jaccard_intersection_plot
+```
+
+
 # Session Info
 
 ```{r}
