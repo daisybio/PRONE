@@ -1,0 +1,17 @@
+## NLME book
+bibentry(bibtype = "Article",
+         title = "Systematic Evaluation of Normalization Approaches in Tandem Mass Tag and Label-Free Protein Quantification Data Using PRONE",
+         author = c(person(c("Lis"), "Arend"),
+                    person(c("Klaudia"), "Adamowicz"),
+                    person(c("Johannes", "R."), "Schmidt"),
+                    person(c("Yuliya"), "Burankova"),
+                    person(c("Olga"), "Zolotareva"),
+                    person(c("Olga"), "Tsoy"),
+                    person(c("Josch", "K."), "Pauling"),
+                    person(c("Stefan"), "Kalkhof"),
+                    person(c("Jan"), "Baumbach"),
+                    person(c("Markus"), "List"),
+                    person(c("Tanja"), "Laske")),
+         year = "2025", journal = "bioRxiv",
+         doi = "10.1101/2025.01.27.634993")
+         

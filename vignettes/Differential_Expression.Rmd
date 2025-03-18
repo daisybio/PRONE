@@ -249,7 +249,7 @@ For this analysis, the `gprofiler2` package is used to perform the functional en
 enrich_results <- plot_intersection_enrichment(se, de_res, comparison = "PTB-HC", 
                              ain = c("IRS_on_Median", "IRS_on_RobNorm", "RobNorm"), 
                              id_column = "Gene.Names", organism = "hsapiens", 
-                             source = "GO:BP", signif_thr = 0.05)
+                             source = "KEGG", signif_thr = 0.05)
 ```
 
 ```{r, fig.cap = "Heatmap showing enriched terms of the DE sets between different normalization methods for a specific comparison."}

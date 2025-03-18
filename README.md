@@ -58,7 +58,7 @@ download is recommended!
 
 ## Workflow
 
-A six-step workflow was developed in R version 4.4 to evaluate the
+A six-step workflow was developed in R version 4.2.2 to evaluate the
 effectiveness of the previously defined normalization methods on
 proteomics data. The workflow incorporates a set of novel functions and
 also integrates various methods adopted by state-of-the-art tools.
@@ -87,4 +87,9 @@ PRONE](https://daisybio.github.io/PRONE/articles/PRONE.html).
 
 ## Citation
 
-TODO
+Systematic Evaluation of Normalization Approaches in Tandem Mass Tag and
+Label-Free Protein Quantification Data Using PRONE Lis Arend, Klaudia
+Adamowicz, Johannes R. Schmidt, Yuliya Burankova, Olga Zolotareva, Olga
+Tsoy, Josch K. Pauling, Stefan Kalkhof, Jan Baumbach, Markus List, Tanja
+Laske bioRxiv 2025.01.27.634993; doi:
+<https://doi.org/10.1101/2025.01.27.634993>
