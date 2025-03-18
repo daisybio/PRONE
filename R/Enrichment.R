@@ -36,7 +36,6 @@ plot_intersection_enrichment <- function(se, de_res, comparison, ain = NULL, id_
   # Prepare DE results
   de_res <- de_res[de_res$Change != "No Change",]
   de_res <- de_res[de_res$Assay %in% ain,]
-
   de_res <- de_res[de_res$Comparison %in% c(comparison),]
   dt <- de_res
   
