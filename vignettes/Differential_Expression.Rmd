@@ -261,7 +261,6 @@ enrich_results$enrichment_term_plot
 enrich_results$jaccard_intersection_plot
 ```
 
-
 # Session Info
 
 ```{r}
