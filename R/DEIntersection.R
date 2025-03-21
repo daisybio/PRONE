@@ -264,7 +264,7 @@ extract_consensus_DE_candidates <- function(de_res, ain = NULL, comparisons = NU
     consensus_de <- count_dt[count_dt$Percentage >= norm_thr,]
   } else {
     dt <- dt[, c("Protein.IDs", "Assay")]
-    count_dt <- dt %>% dplyr::group_by(Protein.IDs) %>% dplyr::summarise("Intersections" = n())
+    count_dt <- dt %>% dplyr::group_by(Protein.IDs) %>% dplyr::summarise("Intersections" = dplyr::n())
     count_dt$Percentage <- count_dt$Intersections / length(ain)
     consensus_de <- count_dt[count_dt$Percentage >= norm_thr,]
   }
