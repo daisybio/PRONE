@@ -29,7 +29,7 @@ specify_comparisons <- function(se, condition = NULL, sep = NULL, control = NULL
       
       if(is.null(sep)){
         # only one condition to compare
-        comparisons <- c(comparisons, paste0(sample_a, "-", sample_b))
+        comparisons <- c(comparisons, paste0(sample_b, "-", sample_a))
       } else {
         # check if a or b are controls
         if(!is.null(control)){
