@@ -73,8 +73,7 @@ plot_intersection_enrichment <- function(se, de_res, comparison, ain = NULL, id_
   cluster_dt$source <- NULL
   cluster_dt <- as.data.frame(cluster_dt)
   rownames(cluster_dt) <- terms
-  
-  
+
   # Clustering for heatmap
   tryCatch({
     dist.mat <- vegan::vegdist(cluster_dt, method = "jaccard")
