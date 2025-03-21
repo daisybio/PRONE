@@ -86,6 +86,8 @@ The function `specify_comparisons()` becomes handy when having a lot of sample g
 
 For instance, you have a data set with diabetic and healthy samples (condition) that were measured at day 3 (3d), day 7 (7d), and day 17 (d14) after operation (timepoints. In DE analysis, you want to perform comparisons between the diabetic and healthy samples at each time point but also between the different time points for a fixed condition (e.g. diabetic). Instead of writing all comparisons manually, the function helps to build the right comparison strings by only considering comparisons where at least one of the groups (timepoint or condition) remains static. For this you only need to have a column in your metadata named for instance "Condition" that combines the two groups by "_", with values diabetic_3d, diabetic_7d, diabetic_14d, etc. And in the function you specify the column name "Condition" and the separator (sep = "_").
 
+To ensure clarity, a comparison in the form of Condition-Reference, where the logFC is positive, signifies that the protein intensity is greater in the Condition compared to the Reference.
+
 ### Perform DE Analysis
 
 The function `run_DE()` performs the DE analysis on the selected SummarizedExperiment and comparisons. A novel feature of PRONE is to compare the DE results of different normalization methods as it has been shown that normalization has an impact on downstream analyses. 
