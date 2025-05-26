@@ -87,9 +87,4 @@ PRONE](https://daisybio.github.io/PRONE/articles/PRONE.html).
 
 ## Citation
 
-Systematic Evaluation of Normalization Approaches in Tandem Mass Tag and
-Label-Free Protein Quantification Data Using PRONE Lis Arend, Klaudia
-Adamowicz, Johannes R. Schmidt, Yuliya Burankova, Olga Zolotareva, Olga
-Tsoy, Josch K. Pauling, Stefan Kalkhof, Jan Baumbach, Markus List, Tanja
-Laske bioRxiv 2025.01.27.634993; doi:
-<https://doi.org/10.1101/2025.01.27.634993>
+Lis Arend, Klaudia Adamowicz, Johannes R Schmidt, Yuliya Burankova, Olga Zolotareva, Olga Tsoy, Josch K Pauling, Stefan Kalkhof, Jan Baumbach, Markus List, Tanja Laske, Systematic evaluation of normalization approaches in tandem mass tag and label-free protein quantification data using PRONE, Briefings in Bioinformatics, Volume 26, Issue 3, May 2025, bbaf201, https://doi.org/10.1093/bib/bbaf201.
