@@ -75,7 +75,7 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load and attach PRONE</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/daisybio/PRONE" class="external-link">PRONE</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://daisybio.github.io/PRONE/">PRONE</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2" number="2">
 <h2 id="load-data-tmt">
@@ -129,7 +129,7 @@ Figure 3.2: Overview barplot of the number of samples per pool.
 </div>
 <p>A general overview of the protein intensities across the different samples is provided by the function <code><a href="../reference/plot_heatmap.html">plot_heatmap()</a></code>. The parameter “ain” specifies the data to plot, currently only “raw” and “log2” is available (names(assays(se)). Later if multiple normalization methods are executed, these will be saved as assays, and the normalized data can be visualized.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">available_ains</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu">assays</span><span class="op">(</span><span class="va">se</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">available_ains</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/plot_heatmap.html">plot_heatmap</a></span><span class="op">(</span><span class="va">se</span>, ain <span class="op">=</span> <span class="st">"log2"</span>, color_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pool"</span>, <span class="st">"Group"</span><span class="op">)</span>, </span>
 <span>             label_by <span class="op">=</span> <span class="cn">NULL</span>, only_refs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -433,7 +433,7 @@ Figure 5.4: Boxplot of the distances of the samples to the group centroid calcul
 <span><span class="co">#&gt;  [57] tools_4.4.1                 PSMatch_1.8.0              </span></span>
 <span><span class="co">#&gt;  [59] glue_1.7.0                  nlme_3.1-165               </span></span>
 <span><span class="co">#&gt;  [61] QFeatures_1.14.2            gridtext_0.1.5             </span></span>
-<span><span class="co">#&gt;  [63] grid_4.4.1                  cluster_2.1.6              </span></span>
+<span><span class="co">#&gt;  [63] grid_4.4.1                  cluster_2.1.8.1            </span></span>
 <span><span class="co">#&gt;  [65] reshape2_1.4.4              generics_0.1.3             </span></span>
 <span><span class="co">#&gt;  [67] gtable_0.3.5                preprocessCore_1.66.0      </span></span>
 <span><span class="co">#&gt;  [69] tidyr_1.3.1                 data.table_1.15.4          </span></span>

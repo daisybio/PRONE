@@ -75,7 +75,7 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load and attach PRONE</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/daisybio/PRONE" class="external-link">PRONE</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://daisybio.github.io/PRONE/">PRONE</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2" number="2">
 <h2 id="load-data-tmt">
@@ -126,7 +126,7 @@
 <code class="sourceCode R"><span><span class="va">se_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/medianNorm.html">medianNorm</a></span><span class="op">(</span><span class="va">se_norm</span>, ain <span class="op">=</span> <span class="st">"log2"</span>, aout <span class="op">=</span> <span class="st">"Median"</span><span class="op">)</span></span></code></pre></div>
 <p>All normalized intensities are stored in the SummarizedExperiment object and you can check the already performed normalization techniques using:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu">assays</span><span class="op">(</span><span class="va">se_norm</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">se_norm</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "raw"            "log2"           "RobNorm"        "Mean"          </span></span>
 <span><span class="co">#&gt; [5] "Median"         "IRS_on_RobNorm" "IRS_on_Mean"    "IRS_on_Median"</span></span></code></pre></div>
 <p>We suggest using the default value of the on_raw parameter. This parameter specifies whether the data should be normalized on raw or log2-transformed data. The default value of the “on_raw” parameters was made for each normalization method individually based on publications.</p>
@@ -384,7 +384,7 @@ Figure 4.15: Reduction of intragroup variation, here using PMAD, for all normali
 <span><span class="co">#&gt;  [21] zlibbioc_1.50.0             cachem_1.1.0               </span></span>
 <span><span class="co">#&gt;  [23] jsonlite_1.8.8              highr_0.11                 </span></span>
 <span><span class="co">#&gt;  [25] DelayedArray_0.30.1         BiocParallel_1.38.0        </span></span>
-<span><span class="co">#&gt;  [27] parallel_4.4.1              cluster_2.1.6              </span></span>
+<span><span class="co">#&gt;  [27] parallel_4.4.1              cluster_2.1.8.1            </span></span>
 <span><span class="co">#&gt;  [29] R6_2.5.1                    RColorBrewer_1.1-3         </span></span>
 <span><span class="co">#&gt;  [31] bslib_0.8.0                 stringi_1.8.4              </span></span>
 <span><span class="co">#&gt;  [33] limma_3.60.4                jquerylib_0.1.4            </span></span>

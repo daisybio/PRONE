@@ -58,7 +58,7 @@ Suggests:
     BiocStyle,
     DT
 BugReports: https://github.com/daisybio/PRONE/issues
-URL: https://github.com/daisybio/PRONE
+URL: https://daisybio.github.io/PRONE/
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 biocViews: Proteomics, Preprocessing, Normalization, DifferentialExpression, Visualization

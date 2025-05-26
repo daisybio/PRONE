@@ -103,7 +103,7 @@ label-free quantification (LFQ) can be analyzed.</p>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"PRONE"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load and attach PRONE</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/daisybio/PRONE" class="external-link">PRONE</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://daisybio.github.io/PRONE/">PRONE</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2" number="3">
 <h2 id="workflow">
@@ -232,9 +232,9 @@ methods is available.</p>
 <span><span class="co">#&gt;   IDs</span></span>
 <span><span class="co">#&gt; colnames(12): 2206_WT 2208_WT ... 2285_Arom 2253_Arom</span></span>
 <span><span class="co">#&gt; colData names(3): Column Animal Condition</span></span></code></pre></div>
-<p>The different data types can be accessed by using the <code>assays()</code> function. Currently, only the raw data and log2-transformed data are stored in the SummarizedExperiment object.</p>
+<p>The different data types can be accessed by using the <code><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays()</a></code> function. Currently, only the raw data and log2-transformed data are stored in the SummarizedExperiment object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">assays</span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of length 2</span></span>
 <span><span class="co">#&gt; names(2): raw log2</span></span></code></pre></div>
 </div>
@@ -250,7 +250,7 @@ methods is available.</p>
 <span><span class="co">#&gt; LoessF completed.</span></span></code></pre></div>
 <p>The normalized intensities will be saved as additional assays in the SummarizedExperiment object.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">assays</span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of length 4</span></span>
 <span><span class="co">#&gt; names(4): raw log2 Median LoessF</span></span></code></pre></div>
 <p>Again, more information on the individual processes can be find in dedicated vignettes.</p>
@@ -310,7 +310,7 @@ methods is available.</p>
 <span><span class="co">#&gt; [21] cachem_1.1.0                jsonlite_1.8.8             </span></span>
 <span><span class="co">#&gt; [23] highr_0.11                  DelayedArray_0.30.1        </span></span>
 <span><span class="co">#&gt; [25] BiocParallel_1.38.0         parallel_4.4.1             </span></span>
-<span><span class="co">#&gt; [27] cluster_2.1.6               R6_2.5.1                   </span></span>
+<span><span class="co">#&gt; [27] cluster_2.1.8.1             R6_2.5.1                   </span></span>
 <span><span class="co">#&gt; [29] bslib_0.8.0                 stringi_1.8.4              </span></span>
 <span><span class="co">#&gt; [31] limma_3.60.4                jquerylib_0.1.4            </span></span>
 <span><span class="co">#&gt; [33] Rcpp_1.0.13                 bookdown_0.40              </span></span>
