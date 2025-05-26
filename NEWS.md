@@ -1,3 +1,7 @@
+# PRONE 1.0.7
+
+* Publication added
+
 # PRONE 0.99.4
 
 * Trigger new test for Bioconductor
