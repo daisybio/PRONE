@@ -1,6 +1,6 @@
 ## NLME book
 bibentry(bibtype = "Article",
-         title = "Systematic Evaluation of Normalization Approaches in Tandem Mass Tag and Label-Free Protein Quantification Data Using PRONE",
+         title = "Systematic evaluation of normalization approaches in tandem mass tag and label-free protein quantification data using PRONE",
          author = c(person(c("Lis"), "Arend"),
                     person(c("Klaudia"), "Adamowicz"),
                     person(c("Johannes", "R."), "Schmidt"),
@@ -12,5 +12,5 @@ bibentry(bibtype = "Article",
                     person(c("Jan"), "Baumbach"),
                     person(c("Markus"), "List"),
                     person(c("Tanja"), "Laske")),
-         year = "2025", journal = "bioRxiv",
-         doi = "10.1101/2025.01.27.634993")
+         year = "2025", journal = "Briefings in Bioinformatics",
+         doi = "10.1093/bib/bbaf201")
