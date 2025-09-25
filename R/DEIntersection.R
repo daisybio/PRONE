@@ -17,69 +17,81 @@
 #'               plot_type = "stacked")
 #'
 plot_upset_DE <- function(de_res, ain = NULL, comparisons = NULL, min_degree = 2, plot_type = "single") {
-  # check parameters
-  tmp <- check_plot_DE_parameters(de_res, ain, comparisons)
-  de_res <- tmp[[1]]
-  ain <- tmp[[2]]
-  comparisons <- tmp[[3]]
-  stopifnot(plot_type %in% c("single", "stacked"))
-  de_res <- de_res[de_res$Assay %in% ain, ]
-  de_res <- de_res[de_res$Comparison %in% comparisons,]
-  p <- list()
-
-  # prepare data for upset
-  dt <- de_res[de_res$Change %in% c("Up Regulated", "Down Regulated", "Significant Change"), ]
-  dt <- dt[, c("Assay", "Comparison", "Protein.IDs"), with = FALSE]
-  dt <- data.table::dcast(dt, Protein.IDs + Comparison ~ Assay, fun.aggregate = length) %>% as.data.frame()
-
-  # prepare table of intersections
-  available_ains <- colnames(dt[,!colnames(dt) %in% c("Protein.IDs", "Comparison")])
-  nr_methods <- data.frame("Protein.IDs" = dt$Protein.IDs, "Comparison" = dt$Comparison, "Nr" = rowSums(dt[,available_ains]))
-  dt <- dt %>%
-    dplyr::mutate(dplyr::across(dplyr::where(is.factor), as.character))
-  t <- purrr::map2_df(dt, names(dt), ~  replace(.x, .x==TRUE, .y))
-  t[t == 0] <- NA
-  t <- as.data.frame(t)
-  res <- t %>% tidyr::unite(., available_ains, col = "Assays", na.rm=TRUE, sep = ",")
-  res <- merge(res, nr_methods, by = c("Protein.IDs", "Comparison"))
-  res <- res[order(-res$Nr),]
-  res <- res[, c("Protein.IDs", "Nr", "Assays", "Comparison")]
-  colnames(res) <- c("Protein.IDs", "Number of Intersected Assays", "Assays", "Comparison")
-
-  if(plot_type == "stacked"){
-    upset <- ComplexUpset::upset(dt, intersect = available_ains, min_degree = min_degree,
-                                 base_annotations = list("Intersection Size" = ComplexUpset::intersection_size(counts = TRUE,
-                                                                                                               bar_number_threshold = 1,
-                                                                                                               mapping = ggplot2::aes(fill = Comparison)) + ggplot2::scale_fill_brewer(palette = "Set2", name = "Comparison")))
-    p <- list("upset" = upset, "table" = res)
+  if (packageVersion("ggplot2") >= "4.0.0" &&
+      packageVersion("ComplexUpset") <= "1.3.6"){
+    message(
+      "NOTE: The installed version of ComplexUpset package is not yet",
+      "compatible with ggplot2 >= v4.0.0.",
+      "Please downgrade to ggplot2 v3 to use this feature.",
+      "EpiCompare will proceed without generating upset plot. \n "
+    )
+    return(NULL)
   } else {
-
-    for (comp in comparisons) {
-      comp_dt <- dt[dt$Comparison == comp, ]
-      comp_res <- res[res$Comparison == comp,]
-      if (nrow(dt) == 0) {
-        warning(paste0("No significant changes for comparison ", comp, ": nothing to plot."))
-      } else {
-        # plot
-        upset <- ComplexUpset::upset(
-          comp_dt,
-          available_ains,
-          name = "",
-          set_sizes = ComplexUpset::upset_set_size(position = "right") + ggplot2::ylab("Set Size"),
-          sort_sets = FALSE,
-          keep_empty_groups = FALSE,
-          sort_intersections = "descending",
-          min_degree = min_degree,
-          base_annotations = list("Intersection Size" =
-                                    ComplexUpset::intersection_size(text = list(size = 3))),
-          themes = ComplexUpset::upset_default_themes(text = ggplot2::element_text(size = 12))
-        )
-
-        p[[comp]] <- list("upset" = upset, "table" = comp_res)
+      
+    # check parameters
+    tmp <- check_plot_DE_parameters(de_res, ain, comparisons)
+    de_res <- tmp[[1]]
+    ain <- tmp[[2]]
+    comparisons <- tmp[[3]]
+    stopifnot(plot_type %in% c("single", "stacked"))
+    de_res <- de_res[de_res$Assay %in% ain, ]
+    de_res <- de_res[de_res$Comparison %in% comparisons,]
+    p <- list()
+  
+    # prepare data for upset
+    dt <- de_res[de_res$Change %in% c("Up Regulated", "Down Regulated", "Significant Change"), ]
+    dt <- dt[, c("Assay", "Comparison", "Protein.IDs"), with = FALSE]
+    dt <- data.table::dcast(dt, Protein.IDs + Comparison ~ Assay, fun.aggregate = length) %>% as.data.frame()
+  
+    # prepare table of intersections
+    available_ains <- colnames(dt[,!colnames(dt) %in% c("Protein.IDs", "Comparison")])
+    nr_methods <- data.frame("Protein.IDs" = dt$Protein.IDs, "Comparison" = dt$Comparison, "Nr" = rowSums(dt[,available_ains]))
+    dt <- dt %>%
+      dplyr::mutate(dplyr::across(dplyr::where(is.factor), as.character))
+    t <- purrr::map2_df(dt, names(dt), ~  replace(.x, .x==TRUE, .y))
+    t[t == 0] <- NA
+    t <- as.data.frame(t)
+    res <- t %>% tidyr::unite(., available_ains, col = "Assays", na.rm=TRUE, sep = ",")
+    res <- merge(res, nr_methods, by = c("Protein.IDs", "Comparison"))
+    res <- res[order(-res$Nr),]
+    res <- res[, c("Protein.IDs", "Nr", "Assays", "Comparison")]
+    colnames(res) <- c("Protein.IDs", "Number of Intersected Assays", "Assays", "Comparison")
+  
+    if(plot_type == "stacked"){
+      upset <- ComplexUpset::upset(dt, intersect = available_ains, min_degree = min_degree,
+                                   base_annotations = list("Intersection Size" = ComplexUpset::intersection_size(counts = TRUE,
+                                                                                                                 bar_number_threshold = 1,
+                                                                                                                 mapping = ggplot2::aes(fill = Comparison)) + ggplot2::scale_fill_brewer(palette = "Set2", name = "Comparison")))
+      p <- list("upset" = upset, "table" = res)
+    } else {
+  
+      for (comp in comparisons) {
+        comp_dt <- dt[dt$Comparison == comp, ]
+        comp_res <- res[res$Comparison == comp,]
+        if (nrow(dt) == 0) {
+          warning(paste0("No significant changes for comparison ", comp, ": nothing to plot."))
+        } else {
+          # plot
+          upset <- ComplexUpset::upset(
+            comp_dt,
+            available_ains,
+            name = "",
+            set_sizes = ComplexUpset::upset_set_size(position = "right") + ggplot2::ylab("Set Size"),
+            sort_sets = FALSE,
+            keep_empty_groups = FALSE,
+            sort_intersections = "descending",
+            min_degree = min_degree,
+            base_annotations = list("Intersection Size" =
+                                      ComplexUpset::intersection_size(text = list(size = 3))),
+            themes = ComplexUpset::upset_default_themes(text = ggplot2::element_text(size = 12))
+          )
+  
+          p[[comp]] <- list("upset" = upset, "table" = comp_res)
+        }
       }
     }
+    return(p)
   }
-  return(p)
 }
 
 
