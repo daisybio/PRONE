@@ -210,10 +210,12 @@ Moreover, you can also intersect the DE results of different normalization metho
 intersections <- plot_upset_DE(de_res, ain = NULL, 
                                comparisons = comparisons[seq_len(3)], 
                                min_degree = 6, plot_type = "stacked")
-# put legend on top due to very long comparisons
+if(!is.null(intersections)){
+  # put legend on top due to very long comparisons
 intersections$upset[[2]] <- intersections$upset[[2]] + 
   ggplot2::theme(legend.position = "top", legend.direction = "vertical")
 intersections$upset
+}
 ```
 
 Additionally, the Jaccard similarity index can be calculated to quantify the similarity of the DE results between the different normalization methods. A individual heatmap can be generated for each comparison ("plot_type = single"), a single heatmap facetted by comparison ("facet_comp") or a single heatmap taking all comparisons into account ("all") can be generated.

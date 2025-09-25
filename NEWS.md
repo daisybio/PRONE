@@ -1,3 +1,7 @@
+# PRONE 1.2.2
+
+* Disabled generation of DE intersections/upset plot since ComplexUpset package 1.3.3 (CRAN) is not yet compatible with ggplot2 >= v4.0.0. 
+
 # PRONE 0.99.4
 
 * Trigger new test for Bioconductor
