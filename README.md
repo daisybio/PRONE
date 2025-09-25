@@ -85,6 +85,10 @@ To get familiar with the functionalities of the R package, check out the
 article [Getting started with
 PRONE](https://daisybio.github.io/PRONE/articles/PRONE.html).
 
+## Bioconductor Development
+
+The branches RELEASE_* in this repository are aligned with the corresponding Bioconductor release branches. The most recent Bioconductor development is maintained on the upstream devel branch, which, upon release, is merged into a newly created upstream RELEASE_* branch. For instance, when Bioconductor version 3.22 is released, this repository’s RELEASE_3_22 branch is synchronized with the upstream devel branch until the release date. After the release, RELEASE_3_22 tracks the corresponding upstream release branch, while the upstream devel branch continues to serve as the basis for the subsequent development cycle.
+
 ## Citation
 
 Lis Arend, Klaudia Adamowicz, Johannes R Schmidt, Yuliya Burankova, Olga Zolotareva, Olga Tsoy, Josch K Pauling, Stefan Kalkhof, Jan Baumbach, Markus List, Tanja Laske, Systematic evaluation of normalization approaches in tandem mass tag and label-free protein quantification data using PRONE, Briefings in Bioinformatics, Volume 26, Issue 3, May 2025, bbaf201, https://doi.org/10.1093/bib/bbaf201.
