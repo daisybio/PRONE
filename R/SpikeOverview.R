@@ -32,7 +32,8 @@ plot_identified_spiked_proteins <- function(se, color_by = NULL, label_by = NULL
   dt$Spiked <- rowdata[[spike_column]]
 
   # How Many spiked and BG Proteins per Sample
-  stats <- dt %>% dplyr::group_by(Spiked) %>% dplyr::summarise_each(dplyr::funs(sum))
+  stats <- dt %>% dplyr::group_by(Spiked) %>% dplyr::summarise(dplyr::across(everything(), sum))
+
   stats <- t(stats)
   colnames(stats) <- stats[1,]
   stats <- stats[2:nrow(stats),]
